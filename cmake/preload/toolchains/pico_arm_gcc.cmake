@@ -49,4 +49,8 @@ option(PICO_DEOPTIMIZED_DEBUG "Build debug builds with -O0" 0)
 
 # on ARM -mcpu should not be mixed with -march
 set(ARM_TOOLCHAIN_COMMON_FLAGS " -mcpu=cortex-m0plus -mthumb")
+# Static analysis flag
+if (BUILD_STATIC_ANALYSIS)
+set(ARM_TOOLCHAIN_COMMON_FLAGS "${ARM_TOOLCHAIN_COMMON_FLAGS} -fanalyzer")
+endif()
 include(${CMAKE_CURRENT_LIST_DIR}/set_flags.cmake)
